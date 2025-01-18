@@ -7,8 +7,8 @@ import { useDeleteDataMutation, useGetDatasQuery, usePostDataMutation } from '..
 
 let schema = yup.object().shape({
   name: yup.string().required("Name is required"),
-  img: yup.string().required("Image is required"),
   desc: yup.string().required("Description is required"),
+  img: yup.string().required("Image is required")
 });
 
 function Add() {
@@ -17,8 +17,8 @@ function Add() {
   let [deleteData] = useDeleteDataMutation()
 
   console.log(data);
-  
- async function handleDelete(id) {
+
+  async function handleDelete(id) {
     await deleteData(id)
     refetch()
   }
@@ -47,13 +47,13 @@ function Add() {
           {({ isSubmitting }) => (
             <Form>
               <Field type="text" name="name" placeholder="Enter Name" />
-              <ErrorMessage name="namete" component="div" />
+              <ErrorMessage name="name" component="div" style= {{color:"red"}}/>
 
               <Field type="text" name="desc" placeholder="Enter Description" />
-              <ErrorMessage name="desc" component="div" />
+              <ErrorMessage name="desc" component="div" style= {{color:"red"}} />
 
               <Field type="text" name="img" placeholder="Enter Image" />
-              <ErrorMessage name="img" component="div" />
+              <ErrorMessage name="img" component="div" style= {{color:"red"}}/>
 
               <button type="submit" disabled={isSubmitting}>
                 Submit
@@ -73,9 +73,9 @@ function Add() {
             ) : (
               data.map((item) => (
                 <tr>
-                  <td><img src={item.img} alt="" style={{width:"100px"}}/></td>
+                  <td><img src={item.img} alt="" style={{ width: "100px" }} /></td>
                   <td>{item.name}</td>
-                  <td onClick={()=>handleDelete(item._id)}><FaDeleteLeft /></td>
+                  <td onClick={() => handleDelete(item._id)}><FaDeleteLeft /></td>
                 </tr>
               ))
             )
