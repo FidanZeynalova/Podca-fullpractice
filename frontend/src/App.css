@@ -106,6 +106,30 @@
     justify-content: center;
     margin: 0px auto;
     gap: 20px;
+    .sort-search{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
+      .search{
+        width: 100%;
+        input{
+          width: 100%;
+          border: 1px solid #f23a2e;
+          font-size: 18px;
+          padding: 8px;
+        }
+      }
+      .sort{
+        width: 100%;
+        select{
+          width: 100%;
+          border: 1px solid #f23a2e;
+          font-size: 18px;
+          padding: 8px;
+        }
+      }
+    }
     .card-wrapper {
       display: grid;
       width: 100%;
